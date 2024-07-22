@@ -51,7 +51,7 @@
         </p>
 
         <p class="mt-4 text-sm">
-            <a href="{{route('bio_job', 1)}}"
+            <a href="{{route('bio_job', 'job')}}"
                 class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
                 Apply
 

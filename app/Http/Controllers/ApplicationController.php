@@ -11,9 +11,9 @@ class ApplicationController extends Controller
      */
     public function index($type)
     {
-        if ($type == 1){
+        if ($type == 'job'){
             return view('bio_job');
-        }elseif ($type == 2) {
+        }elseif ($type == 'scholarship') {
             return view('bio_edu');
         }else{
             notify()->error('Not Availble');
@@ -32,9 +32,14 @@ class ApplicationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store_job(Request $request)
     {
-        //
+        dd($request);
+    }
+
+    public function store_edu(Request $request)
+    {
+        dd($request);
     }
 
     /**

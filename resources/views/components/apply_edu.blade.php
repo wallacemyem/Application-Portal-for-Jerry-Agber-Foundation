@@ -50,7 +50,7 @@
         </p>
 
         <p class="mt-4 text-sm">
-            <a href="{{route('bio_edu', 2)}}" class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
+            <a href="{{route('bio_edu', 'scholarship')}}" class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
                 Apply
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
