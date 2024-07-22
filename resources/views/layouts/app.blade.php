@@ -40,6 +40,7 @@
 
         @stack('modals')
 
+        <x-notify::notify />
         @livewireScripts
     </body>
 </html>

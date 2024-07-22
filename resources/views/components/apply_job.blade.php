@@ -2,12 +2,12 @@
     class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
 
     <h1 class="mt-8 text-2xl font-medium text-gray-900 dark:text-white">
-        Education Scholarships application!
+        Job Placements application!
     </h1>
 
     <p class="mt-6 text-gray-500 dark:text-gray-400 leading-relaxed">
-        Education knows no boundaries. We’re committed to providing access to quality education for every child,
-        regardless of their background. Our scholarship programs empower students to dream big and achieve their goals.
+        Our youth are the architects of tomorrow. We mentor, train, and empower young minds, equipping them with the
+        skills and confidence to shape a brighter future.
     </p>
 </div>
 
@@ -25,8 +25,8 @@
         </div>
 
         <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-            Graduates and undergraduates seeking admission to Canadian universities or colleges.</p>
-
+            Professionals with relevant skills and experience in sciences, technology, engineering and mathematics.
+        </p>
     </div>
 
     <div>
@@ -43,14 +43,16 @@
 
         <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
             Name, Updated resume/CV, Council ward, Phone number, Course of study, International Passport and Relevant
-            Government ID, Social Media Links (Facebook, LinkedIn and Twitter)
+            Government ID, Social Media Links (Facebook, LinkedIn and Twitter) and Other Relevant certifications or
+            qualifications.
 
-            Local Government Certificate of Origin (issued by your respective local government area).
+            Local Government Certificate of Origin. Makurdi/Guma local governments
 
         </p>
 
         <p class="mt-4 text-sm">
-            <a href="{{route('bio_edu', 2)}}" class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
+            <a href="{{route('bio_job', 1)}}"
+                class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
                 Apply
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -76,7 +78,13 @@
         </div>
 
         <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-            Mentorship and networking opportunities.
+            Assistance with job search and placement.
+
+            Guidance on work permits and immigration processes.
+
+            Integration support upon arrival in Canada.
+
         </p>
+
     </div>
 </div>

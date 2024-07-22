@@ -16,9 +16,16 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
+
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Apply') }}
+                    <x-nav-link href="{{ route('job') }}" :active="request()->routeIs('job')">
+                        {{ __('Apply for Job Placement') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link href="{{ route('edu') }}" :active="request()->routeIs('edu')">
+                        {{ __('Apply for Education Scholarship') }}
                     </x-nav-link>
                 </div>
             </div>
