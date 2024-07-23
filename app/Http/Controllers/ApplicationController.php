@@ -119,7 +119,7 @@ class ApplicationController extends Controller
             return redirect()->back()->with('error', 'Bio data not submitted successfully!');
         }
 
-        return redirect()->back()->with('success', 'Bio data submitted successfully!');
+        return redirect()->route('dashboard')->with('success', 'Bio data submitted successfully!');
     }
 
     public function store_edu(Request $request)
@@ -191,7 +191,7 @@ class ApplicationController extends Controller
             return redirect()->back()->with('error', 'Bio data not submitted successfully!');
         }
 
-        return redirect()->back()->with('success', 'Bio data submitted successfully!');
+        return redirect()->route('dashboard')->with('success', 'Bio data submitted successfully!');
     }
 
     /**

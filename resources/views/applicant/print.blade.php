@@ -97,7 +97,7 @@
     </style>
 </head>
 
-<body>
+<body onload="window.print()">
     <div class="letterhead">
         <img src="{{ asset('logo.png') }}" alt="Company Logo" class="logo">
         <div class="company-info">
@@ -129,7 +129,7 @@
         @endphp
         <div class="section">
             <h2>Personal Information</h2>
-            <img src="{{ asset($app_data->lgco_file_path) }}" alt="Applicant Photo" class="photo">
+            <img src="{{ asset($app_data->photo) }}" alt="Applicant Photo" class="photo">
             <table>
                 <tr>
                     <th>Name</th>
@@ -168,7 +168,7 @@
             </table>
         </div>
 
-        @if ($app_data->facebook_profile || $app_data->linkedin_profile || $app_data->x_profile)
+        {{-- @if ($app_data->facebook_profile || $app_data->linkedin_profile || $app_data->x_profile)
             <div class="section">
                 <h2>Social Media Profiles</h2>
                 <table>
@@ -192,33 +192,9 @@
                     @endif
                 </table>
             </div>
-        @endif
-
-        <div class="section">
-            <h2>Documents</h2>
-            <table>
-                @if ($app_data->cv_file_path)
-                    <tr>
-                        <th>Resume/CV</th>
-                        <td>Available</td>
-                    </tr>
-                @endif
-                @if ($app_data->id_file_path)
-                    <tr>
-                        <th>ID Document</th>
-                        <td>Available</td>
-                    </tr>
-                @endif
-                @if ($app_data->lgco_file_path)
-                    <tr>
-                        <th>Local Government Certificate of Origin</th>
-                        <td>Available</td>
-                    </tr>
-                @endif
-            </table>
-        </div>
+        @endif --}}
     </div>
-    Date printed: <i>{{ now() }}</i>
+    Date generated: <i>{{ now() }}</i>
     {{-- <div class="footer">
         <p>© {{ date('Y') }} Jerry Agber Foundation.</p>
         <p>This document is confidential and intended solely for the use of the individual or entity to whom it is

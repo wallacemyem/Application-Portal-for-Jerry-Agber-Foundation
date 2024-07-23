@@ -49,7 +49,7 @@
                     <div class="bg-white overflow-hidden shadow rounded-lg">
                         <div class="px-4 py-5 sm:p-6">
                             <h2 class="text-xl font-semibold mb-4">Personal Information</h2>
-                            <img src="{{ asset($app_data->lgco_file_path) }}" alt="Applicant Photo"
+                            <img src="{{ asset($app_data->photo) }}" alt="Applicant Photo"
                                 class="w-20 h-20 rounded-full mb-4">
                             <p><strong>Name:</strong> {{ $app_data->surname }} {{ $app_data->first_name }}
                                 {{ $app_data->other_name }}</p>
@@ -76,15 +76,34 @@
                             <h2 class="text-xl font-semibold mb-4">Social Media Profiles</h2>
                             @if ($app_data->facebook_profile)
                                 <p><a href="{{ $app_data->facebook_profile }}" target="_blank"
-                                        class="text-blue-600 hover:underline">Facebook Profile</a></p>
+                                        class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">Facebook
+                                        Profile <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                            class="ms-1 w-5 h-5 fill-indigo-500 dark:fill-indigo-200">
+                                            <path fill-rule="evenodd"
+                                                d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
+                                                clip-rule="evenodd" />
+                                        </svg></a></p>
                             @endif
                             @if ($app_data->linkedin_profile)
                                 <p><a href="{{ $app_data->linkedin_profile }}" target="_blank"
-                                        class="text-blue-600 hover:underline">LinkedIn Profile</a></p>
+                                        class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">LinkedIn
+                                        Profile <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                            class="ms-1 w-5 h-5 fill-indigo-500 dark:fill-indigo-200">
+                                            <path fill-rule="evenodd"
+                                                d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
+                                                clip-rule="evenodd" />
+                                        </svg></a></p>
                             @endif
                             @if ($app_data->x_profile)
                                 <p><a href="{{ $app_data->x_profile }}" target="_blank"
-                                        class="text-blue-600 hover:underline">Twitter Profile</a></p>
+                                        class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">Twitter
+                                        Profile
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                            class="ms-1 w-5 h-5 fill-indigo-500 dark:fill-indigo-200">
+                                            <path fill-rule="evenodd"
+                                                d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
+                                                clip-rule="evenodd" />
+                                        </svg></a></p>
                             @endif
                         </div>
                     </div>
