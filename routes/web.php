@@ -33,4 +33,6 @@ Route::middleware([
     Route::post('/bio_data_job_post', [ApplicationController::class, 'store_job'])->name('bio_job_post');
 
     Route::post('/bio_data_edu_post', [ApplicationController::class, 'store_edu'])->name('bio_edu_post');
+
+    Route::get('/applicant/print/{id}', [ApplicationController::class, 'printView'])->name('applicant.print');
 });

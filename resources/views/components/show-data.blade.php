@@ -1,73 +1,126 @@
-<section class="bg-white dark:bg-gray-900">
-    <div class="container px-6 py-12 mx-auto">
-        <h1 class="text-2xl font-semibold text-gray-800 lg:text-3xl dark:text-white">Frequently asked questions.</h1>
+@php
+    $app_data = \App\Models\BioData::where('user_id', auth()->user()->id)->first();
 
-        <div class="grid grid-cols-1 gap-8 mt-8 lg:mt-16 md:grid-cols-2 xl:grid-cols-3">
-            <div>
+    function status($tt)
+    {
+        if ($tt == 1) {
+            $st = 'Pending';
+            return $st;
+        } elseif ($tt == 2) {
+            $st = 'In Review';
+            return $st;
+        } elseif ($tt == 3) {
+            $st = 'Approved';
+            return $st;
+        }
+    }
+@endphp
+<div class="py-12">
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="p-6 bg-white border-b border-gray-200">
+                <div class="flex justify-between items-center mb-8">
+                    <h1 class="text-3xl font-bold">Applicant Information</h1>
 
-                <div>
-                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white">What can i expect at my first consultation?</h1>
-
-                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident placeat, consequatur eveniet veritatis quos dignissimos beatae dolores exercitationem laboriosam officia magnam atque blanditiis illum doloremque magni ex corrupti tempora quis.
-                    </p>
+                    <a href="{{ route('applicant.print', $app_data->id) }}" target="_blank"
+                        class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+                        </svg>
+                        Print
+                    </a>
                 </div>
-            </div>
-
-            <div>
-
-                <div>
-                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white">What are your opening house?</h1>
-
-                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident placeat, consequatur eveniet veritatis quos dignissimos beatae dolores exercitationem laboriosam officia magnam atque blanditiis illum doloremque magni ex corrupti tempora quis.
-                    </p>
+                <br>
+                <div class="mb-6">
+                    <span
+                        class="px-3 py-1 text-sm font-semibold rounded-full
+                            @if ($app_data->status == 1) bg-yellow-500 text-white
+                            @elseif($app_data->status == 2) bg-blue-500 text-white
+                            @elseif($app_data->status == 3) bg-green-500 text-white
+                            @else bg-gray-500 text-white @endif">
+                        Status: {{ status($app_data->status) }}
+                    </span>
                 </div>
-            </div>
 
-            <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Personal Information -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <h2 class="text-xl font-semibold mb-4">Personal Information</h2>
+                            <img src="{{ asset($app_data->lgco_file_path) }}" alt="Applicant Photo"
+                                class="w-28 h-28 rounded-full mb-4">
+                            <p><strong>Name:</strong> {{ $app_data->surname }} {{ $app_data->first_name }}
+                                {{ $app_data->other_name }}</p>
+                            <p><strong>Email:</strong>
+                                {{ \App\Models\User::where('id', $app_data->user_id)->first()->email }}</p>
+                            <p><strong>Phone:</strong> {{ $app_data->phone }}</p>
+                        </div>
+                    </div>
 
-                <div>
-                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white">Do i need a referral?</h1>
+                    <!-- Application Details -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <h2 class="text-xl font-semibold mb-4">Application Details</h2>
+                            <p><strong>Course of Study:</strong> {{ $app_data->course_of_study }}</p>
+                            <p><strong>Council Ward:</strong> {{ $app_data->council_ward }}</p>
+                            <p><strong>Applied for:</strong>
+                                {{ $app_data->type == 1 ? 'Scholarship' : 'Job Placement' }}</p>
+                        </div>
+                    </div>
 
-                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident placeat, consequatur eveniet veritatis quos dignissimos beatae dolores exercitationem laboriosam officia magnam atque blanditiis illum doloremque magni ex corrupti tempora quis.
-                    </p>
-                </div>
-            </div>
+                    <!-- Social Media Profiles -->
+                    <div class="bg-white overflow-hidden shadow rounded-lg">
+                        <div class="px-4 py-5 sm:p-6">
+                            <h2 class="text-xl font-semibold mb-4">Social Media Profiles</h2>
+                            @if ($app_data->facebook_profile)
+                                <p><a href="{{ $app_data->facebook_profile }}" target="_blank"
+                                        class="text-blue-600 hover:underline">Facebook Profile</a></p>
+                            @endif
+                            @if ($app_data->linkedin_profile)
+                                <p><a href="{{ $app_data->linkedin_profile }}" target="_blank"
+                                        class="text-blue-600 hover:underline">LinkedIn Profile</a></p>
+                            @endif
+                            @if ($app_data->x_profile)
+                                <p><a href="{{ $app_data->x_profile }}" target="_blank"
+                                        class="text-blue-600 hover:underline">Twitter Profile</a></p>
+                            @endif
+                        </div>
+                    </div>
 
-            <div>
+                    <!-- Documents -->
+                    @if ($app_data->cv_file_path)
+                        <div class="bg-white overflow-hidden shadow rounded-lg">
+                            <div class="px-4 py-5 sm:p-6">
+                                <h2 class="text-xl font-semibold mb-4">Resume/CV</h2>
+                                <a href="{{ asset($app_data->cv_file_path) }}"
+                                    class="text-blue-600 hover:underline">Download Resume/CV</a>
+                            </div>
+                        </div>
+                    @endif
 
-                <div>
-                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white">Is the cost of the appoinment covered by private health insurance?</h1>
+                    @if ($app_data->id_file_path)
+                        <div class="bg-white overflow-hidden shadow rounded-lg">
+                            <div class="px-4 py-5 sm:p-6">
+                                <h2 class="text-xl font-semibold mb-4">ID Document</h2>
+                                <a href="{{ asset($app_data->id_file_path) }}"
+                                    class="text-blue-600 hover:underline">Download ID Document</a>
+                            </div>
+                        </div>
+                    @endif
 
-                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident placeat, consequatur eveniet veritatis quos dignissimos beatae dolores exercitationem laboriosam officia magnam atque blanditiis illum doloremque magni ex corrupti tempora quis.
-                    </p>
-                </div>
-            </div>
-
-            <div>
-
-                <div>
-                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white">What is your cancellation policy?</h1>
-
-                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident placeat, consequatur eveniet veritatis quos dignissimos beatae dolores exercitationem laboriosam officia magnam atque blanditiis illum doloremque magni ex corrupti tempora quis.
-                    </p>
-                </div>
-            </div>
-
-            <div>
-
-                <div>
-                    <h1 class="text-xl font-semibold text-gray-700 dark:text-white">What are the parking and public transport options?</h1>
-
-                    <p class="mt-2 text-sm text-gray-500 dark:text-gray-300">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident placeat, consequatur eveniet veritatis quos dignissimos beatae dolores exercitationem laboriosam officia magnam atque blanditiis illum doloremque magni ex corrupti tempora quis.
-                    </p>
+                    @if ($app_data->lgco_file_path)
+                        <div class="bg-white overflow-hidden shadow rounded-lg">
+                            <div class="px-4 py-5 sm:p-6">
+                                <h2 class="text-xl font-semibold mb-4">Local Government Certificate of Origin</h2>
+                                <a href="{{ asset($app_data->lgco_file_path) }}"
+                                    class="text-blue-600 hover:underline">Download Certificate</a>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
-</section>
+</div>

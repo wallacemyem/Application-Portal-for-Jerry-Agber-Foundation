@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BioData;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ApplicationController extends Controller
 {
@@ -182,7 +183,8 @@ class ApplicationController extends Controller
      */
     public function show()
     {
-        return view('show_bio');
+        $app_data = BioData::where('user_id', auth()->user()->id)->first();
+        return view('show_bio', compact('app_data'));
     }
 
     /**
@@ -208,4 +210,10 @@ class ApplicationController extends Controller
     {
         //
     }
+
+    public function printView($id)
+{
+    $app_data = BioData::findOrFail($id);
+    return view('applicant.print', compact('app_data'));
+}
 }
