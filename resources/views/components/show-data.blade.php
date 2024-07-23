@@ -20,7 +20,7 @@
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
             <div class="p-6 bg-white border-b border-gray-200">
                 <div class="flex justify-between items-center mb-8">
-                    <h1 class="text-3xl font-bold">Applicant Information</h1>
+                    <h1 class="text-3xl font-bold"></h1>
 
                     <a href="{{ route('applicant.print', $app_data->id) }}" target="_blank"
                         class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150">
@@ -50,7 +50,7 @@
                         <div class="px-4 py-5 sm:p-6">
                             <h2 class="text-xl font-semibold mb-4">Personal Information</h2>
                             <img src="{{ asset($app_data->lgco_file_path) }}" alt="Applicant Photo"
-                                class="w-28 h-28 rounded-full mb-4">
+                                class="w-20 h-20 rounded-full mb-4">
                             <p><strong>Name:</strong> {{ $app_data->surname }} {{ $app_data->first_name }}
                                 {{ $app_data->other_name }}</p>
                             <p><strong>Email:</strong>
@@ -95,7 +95,14 @@
                             <div class="px-4 py-5 sm:p-6">
                                 <h2 class="text-xl font-semibold mb-4">Resume/CV</h2>
                                 <a href="{{ asset($app_data->cv_file_path) }}"
-                                    class="text-blue-600 hover:underline">Download Resume/CV</a>
+                                    class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">Download
+                                    Resume/CV <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                        class="ms-1 w-5 h-5 fill-indigo-500 dark:fill-indigo-200">
+                                        <path fill-rule="evenodd"
+                                            d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     @endif
@@ -105,7 +112,14 @@
                             <div class="px-4 py-5 sm:p-6">
                                 <h2 class="text-xl font-semibold mb-4">ID Document</h2>
                                 <a href="{{ asset($app_data->id_file_path) }}"
-                                    class="text-blue-600 hover:underline">Download ID Document</a>
+                                    class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">Download
+                                    ID Document <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                        class="ms-1 w-5 h-5 fill-indigo-500 dark:fill-indigo-200">
+                                        <path fill-rule="evenodd"
+                                            d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     @endif
@@ -115,7 +129,16 @@
                             <div class="px-4 py-5 sm:p-6">
                                 <h2 class="text-xl font-semibold mb-4">Local Government Certificate of Origin</h2>
                                 <a href="{{ asset($app_data->lgco_file_path) }}"
-                                    class="text-blue-600 hover:underline">Download Certificate</a>
+                                    class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">Download
+                                    Certificate
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                        class="ms-1 w-5 h-5 fill-indigo-500 dark:fill-indigo-200">
+                                        <path fill-rule="evenodd"
+                                            d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
                             </div>
                         </div>
                     @endif

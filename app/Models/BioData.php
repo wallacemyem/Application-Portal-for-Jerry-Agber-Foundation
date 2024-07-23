@@ -27,5 +27,6 @@ class BioData extends Model
         'user_id',
         'type',
         'status',
+        'photo',
     ];
 }

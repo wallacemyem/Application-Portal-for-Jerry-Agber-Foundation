@@ -48,6 +48,7 @@ class ApplicationController extends Controller
             'xp.url' => 'The X profile must be a valid URL.',
             'lgco.required' => 'The Local Government Certificate of Origin is required.',
             'lgco.mimes' => 'The Local Government Certificate of Origin must be a file of type: pdf, doc, docx, jpeg, png, jpg.',
+            'photo.mimes' => 'Passport Photo must be a file of type: jpeg, png, jpg.',
             'lgco.max' => 'The Local Government Certificate of Origin must not be larger than 2MB.',
         ];
 
@@ -62,6 +63,7 @@ class ApplicationController extends Controller
             'lkp' => 'nullable|url|max:255',
             'xp' => 'nullable|url|max:255',
             'lgco' => 'required|file|mimes:pdf,doc,docx,jpeg,png,jpg|max:2048',
+            'photo' => 'required|file|mimes:jpeg,png,jpg|max:2048',
         ], $messages);
 
         if ($request->hasFile('ucv')) {
@@ -77,6 +79,11 @@ class ApplicationController extends Controller
         if ($request->hasFile('lgco')) {
             $lgcoPath = $request->file('lgco')->store('lgcos', 'public');
             $validated['lgco_file_path'] = $lgcoPath;
+        }
+
+        if ($request->hasFile('photo')) {
+            $photoPath = $request->file('photo')->store('photo', 'public');
+            $validated['photo_file_path'] = $lgcoPath;
         }
 
         // $cvPath = $request->file('ucv')->store('cvs', 'public');
@@ -102,6 +109,7 @@ class ApplicationController extends Controller
         $bioData->cv_file_path = $cvPath;
         $bioData->id_file_path = $idPath;
         $bioData->lgco_file_path = $lgcoPath;
+        $bioData->photo = $photoPath;
         $bioData->user_id = auth()->user()->id;
         $bioData->type = 1;
 
@@ -128,6 +136,7 @@ class ApplicationController extends Controller
             'xp.url' => 'The X profile must be a valid URL.',
             'lgco.required' => 'The Local Government Certificate of Origin is required.',
             'lgco.mimes' => 'The Local Government Certificate of Origin must be a file of type: pdf, doc, docx, jpeg, png, jpg.',
+            'photo.mimes' => 'Passport Photo must be a file of type: jpeg, png, jpg.',
             'lgco.max' => 'The Local Government Certificate of Origin must not be larger than 2MB.',
         ];
 
@@ -142,11 +151,17 @@ class ApplicationController extends Controller
             'lkp' => 'nullable|url|max:255',
             'xp' => 'nullable|url|max:255',
             'lgco' => 'required|file|mimes:pdf,doc,docx,jpeg,png,jpg|max:2048',
+            'photo' => 'required|file|mimes:jpeg,png,jpg|max:2048',
         ], $messages);
 
         if ($request->hasFile('lgco')) {
             $lgcoPath = $request->file('lgco')->store('lgcos', 'public');
             $validated['lgco_file_path'] = $lgcoPath;
+        }
+
+        if ($request->hasFile('photo')) {
+            $photoPath = $request->file('photo')->store('photo', 'public');
+            $validated['photo_file_path'] = $lgcoPath;
         }
 
         $check_data = BioData::where('user_id', auth()->user()->id)->first();
@@ -166,6 +181,7 @@ class ApplicationController extends Controller
         $bioData->linkedin_profile = $request->lkp;
         $bioData->x_profile = $request->xp;
         $bioData->lgco_file_path = $lgcoPath;
+        $bioData->photo = $photoPath;
         $bioData->user_id = auth()->user()->id;
         $bioData->type = 2;
 
