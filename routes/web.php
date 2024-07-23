@@ -4,7 +4,7 @@ use App\Http\Controllers\ApplicationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('dashboard');
 });
 
 Route::middleware([
@@ -24,9 +24,11 @@ Route::middleware([
         return view('edu');
     })->name('edu');
 
-    Route::get('/bio_data/{type}', [ApplicationController::class, 'index'])->name('bio_edu');
+    Route::get('/bio_data/{type}/a', [ApplicationController::class, 'index'])->name('bio_edu');
 
-    Route::get('/bio_data/{type}', [ApplicationController::class, 'index'])->name('bio_job');
+    Route::get('/bio_data/{type}/b', [ApplicationController::class, 'index'])->name('bio_job');
+
+    Route::get('/bio_data/show', [ApplicationController::class, 'show'])->name('show');
 
     Route::post('/bio_data_job_post', [ApplicationController::class, 'store_job'])->name('bio_job_post');
 

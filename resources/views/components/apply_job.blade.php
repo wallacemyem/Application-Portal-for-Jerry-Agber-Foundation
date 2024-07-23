@@ -42,16 +42,19 @@
         </div>
 
         <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-            Name, Updated resume/CV, Council ward, Phone number, Course of study, International Passport and Relevant
-            Government ID, Social Media Links (Facebook, LinkedIn and Twitter) and Other Relevant certifications or
-            qualifications.
-
-            Local Government Certificate of Origin. Makurdi/Guma local governments
+            Name, <br>Updated resume/CV, <br>Council ward,<br> Phone number, <br>Course of study, <br>International
+            Passport and Relevant
+            Government ID, <br>Social Media Links (Facebook, LinkedIn and Twitter), <br> Other Relevant certifications
+            or
+            qualifications,
+            <br>
+            Local Government Certificate of Origin. <br>
+            <sup>Makurdi/Guma local governments</sup>
 
         </p>
 
         <p class="mt-4 text-sm">
-            <a href="{{route('bio_job', 'job')}}"
+            <a href="{{ route('bio_job', 'job') }}"
                 class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
                 Apply
 

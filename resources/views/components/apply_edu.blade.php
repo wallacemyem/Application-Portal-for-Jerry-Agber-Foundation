@@ -42,15 +42,17 @@
         </div>
 
         <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-            Name, Updated resume/CV, Council ward, Phone number, Course of study, International Passport and Relevant
-            Government ID, Social Media Links (Facebook, LinkedIn and Twitter)
-
+            Name,<br> Updated resume/CV,<br> Council ward, <br>Phone number, <br>Course of study, <br>International
+            Passport and Relevant
+            Government ID, <br>Social Media Links (Facebook, LinkedIn and Twitter)
+            <br>
             Local Government Certificate of Origin (issued by your respective local government area).
 
         </p>
 
         <p class="mt-4 text-sm">
-            <a href="{{route('bio_edu', 'scholarship')}}" class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
+            <a href="{{ route('bio_edu', 'scholarship') }}"
+                class="inline-flex items-center font-semibold text-indigo-700 dark:text-indigo-300">
                 Apply
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
