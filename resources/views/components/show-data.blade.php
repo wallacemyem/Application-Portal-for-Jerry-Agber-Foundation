@@ -64,11 +64,12 @@
                         <div class="px-4 py-5 sm:p-6">
                             <h2 class="text-xl font-semibold mb-4">Application Details</h2>
                             <p><strong>Course of Study:</strong> {{ $app_data->course_of_study }}</p>
+                            <p><strong>Council Ward:</strong> {{ $app_data->lga == 1 ? 'Makurdi' : 'Guma' }}</p>
                             <p><strong>Council Ward:</strong> {{ $app_data->council_ward }}</p>
                             <p><strong>Applied for:</strong>
                                 {{ $app_data->type == 1 ? 'Scholarship' : 'Job Placement' }}</p>
                         </div>
-                    </div>
+                    </div
 
                     <!-- Social Media Profiles -->
                     <div class="bg-white overflow-hidden shadow rounded-lg">

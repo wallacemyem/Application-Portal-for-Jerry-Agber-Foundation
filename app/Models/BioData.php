@@ -28,5 +28,6 @@ class BioData extends Model
         'type',
         'status',
         'photo',
+        'lga,'
     ];
 }

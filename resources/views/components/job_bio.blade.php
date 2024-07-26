@@ -62,6 +62,24 @@
             </div>
 
             <div>
+                <label class="text-gray-700 dark:text-gray-200" for="lga">Local Government</label>
+                <select id="lga" name="lga"
+                    class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring @error('cw') border-red-500 @enderror">
+                    <option value="">Select a local government</option>
+
+                    <option value="1">
+                        Makurdi
+                    </option>
+                    <option value="2">
+                        Guma
+                    </option>
+                </select>
+                @error('lga')
+                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div>
                 <label class="text-gray-700 dark:text-gray-200" for="cw">Council ward</label>
                 <input id="cw" name="cw" type="text" value="{{ old('cw') }}"
                     class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring @error('cw') border-red-500 @enderror">
@@ -69,6 +87,8 @@
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
+
+
 
             <div>
                 <label class="text-gray-700 dark:text-gray-200" for="fbp">Facebook profile</label>

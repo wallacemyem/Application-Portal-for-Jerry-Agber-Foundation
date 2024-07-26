@@ -50,6 +50,7 @@ class ApplicationController extends Controller
             'lgco.mimes' => 'The Local Government Certificate of Origin must be a file of type: pdf, doc, docx, jpeg, png, jpg.',
             'photo.mimes' => 'Passport Photo must be a file of type: jpeg, png, jpg.',
             'lgco.max' => 'The Local Government Certificate of Origin must not be larger than 2MB.',
+            'lga.required' => 'Your Local givernment is required.',
         ];
 
         $validated = $request->validate([
@@ -64,6 +65,7 @@ class ApplicationController extends Controller
             'xp' => 'nullable|url|max:255',
             'lgco' => 'required|file|mimes:pdf,doc,docx,jpeg,png,jpg|max:2048',
             'photo' => 'required|file|mimes:jpeg,png,jpg|max:2048',
+            'lga' => 'required',
         ], $messages);
 
         if ($request->hasFile('ucv')) {
@@ -106,6 +108,7 @@ class ApplicationController extends Controller
         $bioData->facebook_profile = $request->fbp;
         $bioData->linkedin_profile = $request->lkp;
         $bioData->x_profile = $request->xp;
+        $bioData->lga = $request->lga;
         $bioData->cv_file_path = $cvPath;
         $bioData->id_file_path = $idPath;
         $bioData->lgco_file_path = $lgcoPath;
@@ -138,6 +141,7 @@ class ApplicationController extends Controller
             'lgco.mimes' => 'The Local Government Certificate of Origin must be a file of type: pdf, doc, docx, jpeg, png, jpg.',
             'photo.mimes' => 'Passport Photo must be a file of type: jpeg, png, jpg.',
             'lgco.max' => 'The Local Government Certificate of Origin must not be larger than 2MB.',
+            'lga.required' => 'Your Local givernment is required.',
         ];
 
         $validated = $request->validate([
@@ -152,6 +156,7 @@ class ApplicationController extends Controller
             'xp' => 'nullable|url|max:255',
             'lgco' => 'required|file|mimes:pdf,doc,docx,jpeg,png,jpg|max:2048',
             'photo' => 'required|file|mimes:jpeg,png,jpg|max:2048',
+            'lga' => 'required',
         ], $messages);
 
         if ($request->hasFile('lgco')) {
@@ -180,6 +185,7 @@ class ApplicationController extends Controller
         $bioData->facebook_profile = $request->fbp;
         $bioData->linkedin_profile = $request->lkp;
         $bioData->x_profile = $request->xp;
+        $bioData->lga = $request->lga;
         $bioData->lgco_file_path = $lgcoPath;
         $bioData->photo = $photoPath;
         $bioData->user_id = auth()->user()->id;
@@ -201,6 +207,12 @@ class ApplicationController extends Controller
     {
         $app_data = BioData::where('user_id', auth()->user()->id)->first();
         return view('show_bio', compact('app_data'));
+    }
+
+    public function show_user(string $id)
+    {
+        $app_data = BioData::where('user_id', $id)->first();
+        return view('bio_user', compact('app_data'));
     }
 
     /**
@@ -228,8 +240,24 @@ class ApplicationController extends Controller
     }
 
     public function printView($id)
-{
-    $app_data = BioData::findOrFail($id);
-    return view('applicant.print', compact('app_data'));
-}
+    {
+        $app_data = BioData::findOrFail($id);
+        return view('applicant.print', compact('app_data'));
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $application = BioData::findOrFail($id);
+        $application->status = $request->status;
+        $application->save();
+
+        $statusText = status($request->status);
+        $statusClass = $request->status == 3 ? 'bg-green-500 text-white' : 'bg-red-500 text-white';
+
+        return response()->json([
+            'success' => true,
+            'status' => $statusText,
+            'class' => $statusClass
+        ]);
+    }
 }
